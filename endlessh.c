@@ -71,8 +71,8 @@ logstdio(enum loglevel level, const char *format, ...)
         time_t t = now / 1000;
         char date[64];
         struct tm tm[1];
-        strftime(date, sizeof(date), "%Y-%m-%dT%H:%M:%S", gmtime_r(&t, tm));
-        printf("%s.%03lldZ ", date, now % 1000);
+        strftime(date, sizeof(date), "%Y-%m-%dT%H:%M:%S", localtime_r(&t, tm));
+        printf("%s.%03lld ", date, now % 1000);
 
         /* Print the rest of the log message */
         va_list ap;
